@@ -1,0 +1,15 @@
+Part 1: Analyze Lagacy Code
+1.	Give the table of value in all columns in Customer table which value in column id is id from the input of function GetCustomerInfo.
+2.	Three distinct problems
+2.1.	SQL injection
+2.1.1.	 Problem: User can just type ‘ OR 1=1 – to take all data from table Customer. (Comment: I know the problem called SQL injection and know that it will attack SQL with special characters, but I don’t know the syntax to use. So, I asked Gemini about the scenario that SQL injection will happen.)
+2.1.2.	 Solution: Use placeholder like ? or @id.
+2.2.	Don’t handle errors
+2.2.1.	 Problem: This function doesn’t have any handle error method, such as when it cannot connect to database. 
+2.2.2.	 Solution: Use try code to show the user error code.
+2.3.	Using SELECT all columns
+2.3.1.	 Problem: The select * can both affect the security and performance. This affects security when adding some new column that needs more security like credit card numbers to the table. The impact on performance is the unnecessary column that must be loaded.
+2.3.2.	 Solution: Specific column.
+2.4.	Hardcoded string connection
+2.4.1.	 Problem: The connection in code can affect the security of database because anyone that can access code will have the ability to access to database without database credential. (Comment: I asked Gemini for more errors that might happen, and this is one of the errors that it mentions)
+2.4.2.	 Solution: Connection strings should collect as configuration files and encrypted.
